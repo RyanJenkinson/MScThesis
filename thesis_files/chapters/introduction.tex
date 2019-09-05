@@ -1,0 +1,130 @@
+% ------------------------------------------------
+% Nomenclature list - update if needed
+\nomenclature[G]{NLP}{Natural Language Processing}
+\nomenclature[G]{ML}{Machine Learning}
+\nomenclature[G]{document}{A general term referring to a piece of text, which may be a single sentence, word or paragraph.}
+\nomenclature[L]{BERT}{Bidirectional Encoder Representation using Transformers}
+\nomenclature[M]{$\mathcal{T}$}{A set of tasks, typically $\mathcal{T} = \{\tau_1, \dots, \tau_n\}$ where $\tau_i$ is task $i$.}
+\nomenclature[Z]{$\mathcal{T}$}{A set of tasks, typically $\mathcal{T} = \{\tau_1, \dots, \tau_n\}$ where $\tau_i$ is task $i$.}
+% ------------------------------------------------
+\chapter{Introduction}
+In this chapter, we give an introduction of the project (including a brief history of the field), describe the relevancy of the problem and the specific research focus of this thesis, and give an overview of the thesis structure. Furthermore, we provide reference to a public repository, where detailed code accompanying this project can be located.
+While many of the ideas in this project can be generalised to other subfields of Natural Language Processing (NLP), we focus in particular on Sentiment Analysis, and specifically on Aspect Based Sentiment Analysis (ABSA), which we outline in \ref{section:intro:absa}. Additionally, the ``task sampling schemas" we investigate in this paper can be generalised to any subfield of ML where Multitask Learning is useful, so in particular Computer Vision applications would benefit from this work. We then briefly present ideas from Transfer Learning, Multitask Learning and Meta Learning (Sections \ref{section:intro:intrototransfer}, \ref{section:intro:introtomultitask} and \ref{section:intro:introtometa}) and indicate how we intend to apply them to fulfill the aims of this project, which we outline in Section \ref{section:intro:projectaims}. All of these ideas are revisited in more detail in the Background, which is our literature review, as this section intends to be an introduction to the project as a whole. 
+
+\section{(A brief) History of NLP} \label{section:intro:history}
+Natural Language Processing (NLP) is a subfield of Machine Learning (ML) that attempts to solve a wide variety of inference or understanding tasks on (human-generated) text data. Traditional NLP existed prior to and outside of ML, and this usually involved crafting task-specific features\footnote{A useful discussion of the various features used for various tasks can be found in \cite{Collobert}} and developing `rules-of-thumb" based on intuition or problem/domain specific knowledge \cite{Kang2013}. Such rule-based early systems relied on deriving heuristics to solve a problem \cite{Brill}, and this approach is in general not robust to natural language variation \cite{Chiticariu2013}. Many rule based systems, including regular expressions for string matching \cite{Kaur2014} and context free grammars for developing parse trees \cite{Nederhof} were outperformed after the statistical revolution in the late 20th century, whereby more sophisticated probabilistic modelling techniques opened a gateway into modelling language. 
+
+Around a similar time, the term ``NLP pipeline" was popularised; referring to the expected sequence of steps that followed when attempting to solve a ``difficult" NLP problem. The pipeline is not a formal or concrete one, and there are different definitions and interpretations (see Figure \ref{fig:intro:nlppipeline} for an example pipeline), but the general ideology is that solving text/speech problems is multifaceted, and relies on a system capable of solving a series of smaller subtasks (in some sense) to achieve its original task \cite{Tenney2019a}. This idea is central to the project, and will be discussed further in Section \ref{section:intro:projectfocus}.
+
+With the revitalisation of Deep Learning following the A.I winter \cite{Nilsson}, the field of NLP (like others) have benefitted from major performance increases amongst a range of tasks, due to the increase in both data and compute. Interestingly, Deep Learning provides a mechanism to actualise the distributional semantics hypothesis \cite{Harris1954} popularised by Ferdinand de Saussure that is famously summarised by the John Firth quote: \textit{``You shall know a word by the company it keeps"}. The ability to ingest millions of sentences allows us to form representations in the form of word vectors that capture the semantic nature of words, yielding a powerful tool for the NLP field, since these representations can be applied to further downstream models to solve our required tasks.
+\begin{center}
+	\adjustbox{max width=\textwidth}{
+	\begin{tikzpicture}[scale=0.8]
+		% the matrix entries
+		\matrix (mat) [table]
+		{
+			\textbf{Task} & \textbf{Description} \\
+			\textit{Part-of-Speech (PoS) tagging}& Determining if a word belongs to a class of words that display a similar behaviour syntactically e.g nouns, verbs, adjectives etc \\
+			\textit{Parsing (Parse Trees)} & Determining the relationship between words in a sentence and building a ``parse tree" \\
+			\textit{Named Entity Recognition (NER)} & Identifying the entities in a given piece of text \\
+			\raisebox{-5mm}{\shortstack{\textit{Semantic}\\ \textit{Roles}}}  & Understanding the meaning of each word in the given context \\
+			\textit{Coreference (Resolution)} & Linking words to entities, and resolving disambiguation \\
+		};
+
+		% the arrows
+		\begin{scope}[shorten >=3pt,shorten <= 3pt]
+		\draw[->, line width=0.5mm]  (mat-2-1.west) to [out=-150,in=150] (mat-3-1.west);
+		\draw[->, line width=0.5mm]  (mat-3-1.west) to [out=-150,in=150] (mat-4-1.west);
+		\draw[->, line width=0.5mm]  (mat-4-1.west) to [out=-150,in=150] (mat-5-1.west);
+		\draw[->, line width=0.5mm]  (mat-5-1.west) to [out=-150,in=150] (mat-6-1.west);
+		\end{scope}
+	\end{tikzpicture}}
+	\captionof{figure}{Potential NLP ``pre-task" pipeline required for a model to solve more complex tasks} \label{fig:intro:nlppipeline}
+\end{center}
+\section{Thesis Focus} \label{section:intro:projectfocus}
+In this section, we briefly describe the key concepts required for the understanding of the aims of the project. All of these sections are fully fleshed out in Chapter \ref{chapter:background}, and include comprehensive relevant literature reviews. For a more detailed description of each section, the reader is referred to Chapter \ref{chapter:background}.
+
+\subsection{Aspect Based Sentiment Analysis} \label{section:intro:absa}
+Sentiment Analysis is a subtask of NLP specifically focused on identifying and categorising the emotion or sentiment of a given document (which we use as a general term to refer to any piece of text, including a word, a sentence, a paragraph etc). Typically, the categories are \textit{Positive} and \textit{Negative} in the binary classification case, but this is often extended to include \textit{Neutral}, and sometimes \textit{Conflict} (in the case where both positive and negative sentiment are detected).
+
+Aspect Based Sentiment Analysis (ABSA) granularises this notion further, by performing a sentiment analysis task but for each aspect present in the document (for a fixed list of aspects). An example of this is presented in Figure \ref{fig:intro:absa}.
+
+Target Aspect Based Sentiment Analysis (TABSA) goes one extra step, applying ABSA to a set of target words e.g locations in the text. Thus, ABSA is equivalent to TABSA when there is just one target, namely the object of the sentence.
+\begin{center}
+	\begin{tikzpicture}[
+	->,
+	>=stealth',
+	shorten >=1pt,
+	auto,
+	node distance=4.75cm,
+	semithick,
+	every state/.style={fill=red,draw=none,text=white},
+	]
+	\node [log, boldtext]        (LOG)                     {[LOG]};
+	\node [aspect]         (P) [above left of=LOG]  {Price};
+	\node [aspect]         (A) [above right of=LOG]  {Atmosphere};
+	\node [sentiment]    (pos) [above of=P] {\Smiley Positive};
+	\node [sentiment]    (neut) [above right of=P] {\Neutrey Neutral};
+	\node [sentiment]    (neg) [above of=A] {\Sadey Negative};
+	%	\node [sentiment]    (chun) [above right of=A] {\Chunny};
+	%	\node [sentiment]    (cool) [below of=chun] {\Cooley};
+	
+	\path[every node/.style={sloped,anchor=south,auto=false}]
+	(LOG) edge              node {hasAspect} (P)            
+	(LOG) edge              node {hasAspect} (A)
+	(P) edge node {hasSentiment} (pos)
+	(A) edge node {hasSentiment} (neg);
+	\end{tikzpicture}
+	\captionof{figure}{Example ABSA Knowledge Graph Construction. \newline Here, \textbf{[LOG]} = ``The restaurant was really cheap, but it didnt have a great vibe". \newline An alternative presentation of the above is that the aspect nodes have sentiment attributes, rather than an additional relation to a seperate node in the graph.} \label{fig:intro:absa}
+\end{center}
+
+Above, we have used the terminology ``log" to refer to an input sequence. This aligns with the companies terminology of referring to a specific response to a survey question as a ``log" for that user. See Appendix \ref{appendix:streetbees} for more information.
+
+\subsection{Transfer Learning} \label{section:intro:intrototransfer}
+Transfer learning has enabled great progress in the field. The basic premise is that we can pretrain base models on quite general tasks and save the weights, then we can initialise our version of a model using the pretrained, initialised base model and add some additional architecture to \textit{fine tune} the model to our specific task. By fine tuning, we mean randomly initialising some additional architecture that projects onto the task labels for classification tasks or single node for regression tasks and training the model end-to-end on new data. In doing so, we leverage the capabilities of the more general base model by starting in a (locally) optimal region of the model parameter space, enabling effective transfer learning to the specific task at hand. Typically, the task that the model was used for pretraining was in some sense more general than the task required at fine tuning time, meaning the system has formed some internal representation, i.e. ``knowledge", to solve the general task that can then be additionally manipulated to solve the specific task.
+
+Not only do we benefit from the democritisation and distributional nature of research (in that we are able to replicate results without access to the compute or data in which the results were obtained, we can just preload in a set of weights that others have trained) but the notion of transfer learning has foundations in human understanding of our own learning; every time we learn a new task we do not ``start from zero", instead we use our pre-existing knowledge as a basis for improvement. Additionally, the type of scenarios that Transfer Learning benefit from are when large datasets are used for the pretraining, enabling us to fine tune onto tasks with significantly less datapoints.
+
+\subsection{Multitask Learning} \label{section:intro:introtomultitask}
+To generalise the notion of Transfer Learning one step further, we may believe that a system capable of performing many tasks simulteneously forms a better representation of each task, since it can learn from related tasks during training and adjust its parameters in a way that \textit{shares knowledge across tasks} in the colearning framework. 
+
+Suppose we were given a set of tasks $\mathcal{T} = \{\tau_1, \dots, \tau_n\}$ that we wanted to learn. Fine tuning/transfer learning would learn each task independently, whereas a clear benefit of multitask learning is that each task is not independent, and colearning encourages a shared knowledge representation. Additionally, this colearning means we can view multitask learning as a form of \textit{inductive transfer}. By introducing an inductive bias, which causes the model to prefer some hypothesis over others, the additional tasks act as a regulariser since the model learns to prefer hypotheses that explain more than one task simultaneously. Another benefit is that suppose we were given a new task $\tau^*$ closely related to some subset of tasks $T \subseteq \mathcal{T}$, then we would typically require less data \cite{Caruana1997} for the new task due to this shared representation of knowledge; from a pedagogical perspective, we often learn tasks first that provide us with the necessary skills to master more complex ones as humans.
+
+\subsection{Meta Learning} \label{section:intro:introtometa}
+Faced with a new task $\tau^*$, how do we learn it? With a transfer learning approach, we may require tens of thousands of new examples from which we have to fine tune. With a multitask learning approach, depending on the similarity to the tasks trained on, we may need thousands or tens of thousands of additional datapoints. But what if a system could, given a set of tasks $\mathcal{T} = \{\tau_1, \dots, \tau_n\}$ for pretraining, learn to generalise well to a new task $\tau^*$ with a minimal number of examples. This is the role of meta learning: ``learning to learn".
+
+Multitask pretraining to colearn a shared knowledge representation and testing on task $\tau^*$ is sometimes referred to as \textit{lifelong learning}, and is a form of meta learning, since the meta learning proposition is to learn ``general" properties of a model (e.g weights) that are highly adaptable to new tasks. Recently, focus has shifted onto model agnostic techniques. In the meta learning paradigm, we explicitly train the model to be able to generalise between the tasks in $\mathcal{T}$ so that, at test time, it is able to learn good representations from a test task from a minimal number of examples.
+
+Like multitask learning, meta learning frameworks act as effective regularisers, since they prefer hypotheses that generalise to many tasks.
+
+\section{Project Aims \& Our Contributions} \label{section:intro:projectaims}
+The primary aim of this project is to investigate the role of multitask learning applied to Language Models for Aspect Based Sentiment Analysis (ABSA) focusing in particular on:
+\begin{itemize}
+	\item The role of primary and auxilliary tasks in the training procedure, and identifying suitable secondary subtasks that improve performance in the primary task (ABSA)
+	\item How the training procedure influences performance. We do this by defining some novel task sampling schemas (as per Section \ref{section:methodology:taskdistributions}) and investigating their effect on the key metrics.
+	\item Investigate the generalisation capability of these systems to previously unseen aspects, including the  introduction a novel application of meta learning to language models for generalising to unseen aspects and comparing this to a lifelong multitask learning approach.
+	\item To provide a consistent, open source implementation, of multitask and meta learners applied to language models for the benefit of the research community.
+\end{itemize}
+
+The literature on MTL is extensive, but there has never been an investigation on specific hierarchical subtask structures and sampling schemas in direct relation to performance on downstram tasks. In this investigation, we scope a very general problem and compare it against baseline multitask learning techniques. The motivation for our selected sampling schemas compared to the current multitask learning methodologies is outlined in Section \ref{section:background:samplingtasks} and defined thoroughly in Sections \ref{section:methodology:taskstructure} and \ref{section:methodology:taskdistributions}.
+
+In particular, we contribute a detailed investigation of optimal fine tuning procedures in the multitask learning setup to learn complex tasks by relying on supporting subtasks of the complex task, and how best to train an end to end model in terms of sampling from these tasks. We open source our implementation for the benefit of the research community, and this methodology could be applied to any NLP problem and works with a variety of Language Modelling architectures and general downstream classification or regression tasks.
+
+We show that this methodology is valid, in the sense that we outperform all metrics for the (T)ABSA tasks, with our champion model utilising our novel sampling schema. We critically analyse and discuss the results, propose meaningful extensions to this research, and provide useful insights and hypotheses into how the pretraining procedure of large language models can affect the fine tuning procedure. The multitask learning landscape, in particular the interplay between transformer architectures and how they learn meaningfully, is not yet well understood by the research community; we hope that this thesis provides a platform on which future research can be based upon.
+
+\section{Commercial Applications}
+Despite being a research project, this thesis topic has strong connections with commercial interests. This code was integrated into the company codebase and productionised for the automatic generation of knowledge graphs.
+
+The framework created for this project (as referenced in Chapter \ref{chapter:methodology} and Appendix \ref{appendix:code}) was extremely flexible, and so could be implemented for a variety of NLP tasks for either research or commericial purposes.
+
+More information on the company and project relevancy can be found in Appendix \ref{appendix:streetbees}, which provides a lot of motivating material for the decisions in the project, and, although these are noted or cited in the thesis document in the relevant locations, the appendix would be welcome introductory background information for the reader.
+
+\section{Public Code Repository}
+\label{section:intro:code}
+The code accompanying this thesis has been made freely available online via GitHub at:
+ \begin{center}
+ \href{www.github.com/RyanJenkinson}{\texttt{www.github.com/RyanJenkinson}}.
+ \end{center}
+In this repository, you can find the library with all of the code, which we have named \texttt{TraMML} - Transformers with Multitask and Meta Learning - as well as this thesis, and all accompanying papers and images. More information regarding specific code implementation and how to run sections of the library can be found in Appendix \ref{appendix:code} or in the \texttt{TraMML} README.
+
+

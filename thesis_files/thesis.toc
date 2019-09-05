@@ -1,0 +1,223 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Tables and Figures}{1}{chapter*.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{List of Tables}{1}{section*.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{List of Figures}{3}{chapter*.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\nonumberline List of Common Terms and Symbols}{5}{chapter*.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{7}{chapter.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}(A brief) History of NLP}{7}{section.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Thesis Focus}{8}{section.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.1}Aspect Based Sentiment Analysis}{8}{subsection.1.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.2}Transfer Learning}{9}{subsection.1.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.3}Multitask Learning}{10}{subsection.1.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.4}Meta Learning}{10}{subsection.1.2.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.3}Project Aims \& Our Contributions}{11}{section.1.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.4}Commercial Applications}{12}{section.1.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.5}Public Code Repository}{12}{section.1.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Background}{13}{chapter.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}The Evolution of Language Modelling}{13}{section.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Problem Setup}{13}{subsection.2.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.2}$n-$gram models}{14}{subsection.2.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.3}Pretrained Word Embeddings: Humble Beginnings}{14}{subsection.2.1.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.4}The Rise of Deep Learning: Using Sequentiality for Context}{16}{subsection.2.1.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Recurrent Neural Networks}{17}{section*.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{ELMo \& GPT}{18}{section*.12}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Current SOTA Language Modelling: Transformers}{19}{section.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Transformer Architecture}{19}{subsection.2.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Attention: An Introduction}{19}{section*.13}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Encoder and Decoder Architecture}{20}{section*.14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Attention: The Mathematical Formalism}{20}{section*.15}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Benefits of Self Attention}{21}{section*.16}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.2}BERT}{22}{subsection.2.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Masked Language Modelling - Cloze Task}{22}{section*.17}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{WordPiece Tokenisation}{23}{section*.18}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Next Sentence Prediction Pretraining task}{23}{section*.19}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Token Structure}{24}{section*.20}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Ablation Study}{25}{section*.21}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Recreating the NLP Pipeline}{25}{section*.22}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.3}XLNet}{26}{subsection.2.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Autoregressive vs Autoencoding Language Modelling: BERT vs XLNet}{26}{section*.23}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Permutation Language Modelling - An alternative pretraining objective}{27}{section*.24}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Ablation Study}{28}{section*.25}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Comparisons with BERT}{28}{section*.26}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.4}Casing in Language Models}{29}{subsection.2.2.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Sentiment Analysis}{29}{section.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.1}SST-2}{30}{subsection.2.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.2}SemEval 2014 - ABSA}{30}{subsection.2.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.3}Sentihood - TABSA}{31}{subsection.2.3.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.4}(T)ABSA and LMs: Auxilliary Sentence Construction Method}{32}{subsection.2.3.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.5}Analysis of the TABSA Explosion Method}{33}{subsection.2.3.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Multitask learning}{33}{section.2.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.1}Types of Multitask Learning}{35}{subsection.2.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Hard Parameter Sharing}{35}{section*.27}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Soft Parameter Sharing}{35}{section*.28}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Adaption Modules}{36}{section*.29}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.2}Sampling Tasks}{36}{subsection.2.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.3}Multitask learning applied to language modelling}{37}{subsection.2.4.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{ERNIE 2.0}{37}{section*.30}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.4}Multitask learning applied to ABSA}{38}{subsection.2.4.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.5}Multitask learning for Knowledge Graph Construction}{38}{subsection.2.4.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.5}Meta Learning}{39}{section.2.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.1}How we learn to learn}{39}{subsection.2.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.2}MAML}{40}{subsection.2.5.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.3}Reptile \& FOMAML}{41}{subsection.2.5.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.4}Meta Learning applied to Language Modelling}{41}{subsection.2.5.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Methodology}{42}{chapter.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Hypothesis}{42}{section.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Task Setup}{42}{section.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Task Structure}{42}{subsection.3.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}Datasets}{43}{subsection.3.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{(T)ABSA Data}{44}{section*.31}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{SST-2}{44}{section*.32}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{PoS}{44}{section*.33}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Streetbees Data}{44}{section*.34}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.3}Task Distributions}{45}{subsection.3.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Model Architecture Setup}{47}{section.3.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Reporting}{48}{section.3.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Experiments \& Results}{49}{chapter.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Base Language Model Choices}{49}{section.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}SemEval (ABSA) Results}{50}{section.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.1}NLI Pretraining Task Importance}{50}{subsection.4.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.2}Analysis of Results}{54}{subsection.4.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}An Overview of SOTA Results Achieved}{55}{section.4.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Streetbees Results}{55}{section.4.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.1}Multilabel Emotion Results}{56}{subsection.4.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.2}Generalisation Capabilities}{57}{subsection.4.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.5}Preliminary Experiments}{57}{section.4.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.5.1}Ensuring Baseline Performance}{57}{subsection.4.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.5.2}Gradual Unfreezing of Base Language Model Layers}{58}{subsection.4.5.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.5.3}Multitask learning for Sentiment Classification}{58}{subsection.4.5.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.6}Success of the Sampling Schemas}{59}{section.4.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.7}Remark on Task Distributions for Experimental Optimisation}{60}{section.4.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Observation 1: The Single Task Setting}{60}{section*.38}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Observation 2: The Two Task Setting}{60}{section*.39}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.8}Training Choices}{61}{section.4.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.8.1}Hyperparameters}{61}{subsection.4.8.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.8.2}Computing Resources}{61}{subsection.4.8.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Extensions}{62}{chapter.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Methodological Refinements}{62}{section.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1.1}Training Time}{62}{subsection.5.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1.2}Subtasks}{63}{subsection.5.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1.3}Task Distributions}{63}{subsection.5.1.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1.4}Hyperparameter Tuning}{64}{subsection.5.1.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1.5}Multiple Runs}{64}{subsection.5.1.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Methodological Extensions}{64}{section.5.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.1}Mutual Information}{64}{subsection.5.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.2}Label Smoothing}{64}{subsection.5.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.3}Meta Learning}{65}{section.5.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.4}Knowledge Graph Extensions}{66}{section.5.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Conclusion}{67}{chapter.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Streetbees: A Company Profile \& Project Relevancy}{69}{appendix.A}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Additional Findings}{71}{appendix.B}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {C}Code listings}{72}{appendix.C}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{References}{73}{appendix.C}% 

@@ -1,0 +1,45 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.1}{\ignorespaces Subtasks and variants of ABSA. Typically, the polarity categories are \{\texttt {positive, negative, neutral, conflict}\} where conflict denotes both positive and negative sentiment being expressed simultaneously\relax }}{30}{table.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.2}{\ignorespaces TABSA Example: {\color {black} LOCATION2} is in central London, and thus extremely expensive, whilst {\color {black} LOCATION1} is often considered the coolest area of London.\relax }}{31}{table.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.3}{\ignorespaces \textbf {B}inary Auxilliary Sentence Construction Method for example in Table \ref {table:background:tabsaexample}\relax }}{32}{table.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.4}{\ignorespaces \textbf {M}ultickass Auxilliary Sentence Construction Method for example in Table \ref {table:background:tabsaexample}\relax }}{32}{table.2.4}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.1}{\ignorespaces Datasets used throughout this thesis, including various properties of each dataset. $^*$ denotes dataset only used for preliminary testing (cf. Section \ref {section:experiments:sentimentonly}) \newline $^\dagger $ denotes using the QA\_\textbf {B} method to create the exploded dataset as described in Table \ref {table:background:tabsasentencesB}. All sizes are given prior to the explosion of the dataset i.e the raw number of input text sentences for each dataset. In some cases, the dev set is equal to the test set, to match the reporting statistics given in various papers and since we are fixing hyperparameters as per \cite {Sun2019} so no hyperparameter tuning is required\relax }}{43}{table.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.2}{\ignorespaces An example of the tagging schemas for CoNLL 2003\relax }}{44}{table.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.3}{\ignorespaces The task weightings corresponding to each importance level\relax }}{46}{table.3.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {3.4}{\ignorespaces A table showing all the key metrics we will be reporting as per the literature, as well as brief description of each one and the current SOTA. \newline $^\dagger $ We may refer to these tasks without the prepending ``\_QA\_B" in the thesis with the agreement there is no ambiguity among the tasks described in Section \ref {section:background:tabsasentenceconstruction} \newline $^\ddagger $ This metric combines the True Positive Rate (TPR) and the False Positive Rate (FPR) as plotted in the Reciever Operator Curve (ROC) into a singular metric, with 1.0 being perfection and 0.5 being roughly equivalent to random guessing. It is frequent to have ROC scores of greater than 0.95 in SOTA applications.\relax }}{48}{table.3.4}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.1}{\ignorespaces SemEval\_QA\_B 2 way (binary) accuracy results (restricted to the top 5 of each model that beat SOTA performance)\relax }}{55}{table.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.2}{\ignorespaces SOTA results for the TABSA tasks: SemEval and Sentihood\relax }}{55}{table.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.3}{\ignorespaces Streetbees Results, showing the best performing model by $F_1$ Score compared to the baseline fine tuning models\relax }}{56}{table.4.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.4}{\ignorespaces The core hyperparameter default values we used throughout our testing\relax }}{61}{table.4.4}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.1}{\ignorespaces A breakdown of the sentiment classes in the SemEval ABSA task\relax }}{65}{table.5.1}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }

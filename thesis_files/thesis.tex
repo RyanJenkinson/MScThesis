@@ -1,0 +1,314 @@
+% !TeX document-id = {6284b349-a8b4-4e21-ba1a-ecfc8e7af9bd}
+% !BIB TS-program = biber
+% !BIB program = biber
+
+\documentclass[11pt]{report}
+\usepackage{setspace}
+%\usepackage{subfigure}
+
+\def \thesistitle {Multitask \& Meta Learning for Language Models}
+
+\usepackage{amssymb,graphicx,color}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage[svgnames]{xcolor}   
+\usepackage{varwidth}
+\usepackage{adjustbox}
+\DeclareCaptionFormat{myformat}{%
+	% #1: label (e.g. "Table 1")
+	% #2: separator (e.g. ": ")
+	% #3: caption text
+	\begin{varwidth}{\linewidth}%
+		\centering
+		#1#2#3%
+	\end{varwidth}%
+}
+\captionsetup{format=myformat}
+\counterwithout*{footnote}{chapter} % Ensure that footnote numbers stay consistent and increase across chapters
+
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+
+\usepackage{multirow}% http://ctan.org/pkg/multirow
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\usepackage{enumerate}
+\usepackage{pdfpages}
+\usepackage{algorithm,algorithmicx}
+\usepackage[noend]{algpseudocode}
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+\usepackage[normalem]{ulem} %Striking through text
+% HEADERS
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\slshape\nouppercase{\leftmark}}
+\fancyhead[R]{\slshape\nouppercase{\thesistitle}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+
+% NOMENCLATURE
+\usepackage[intoc, english]{nomencl}
+\makenomenclature
+\renewcommand{\nomname}{List of Common Terms and Symbols}
+\renewcommand{\nompreamble}{This list outlines several symbols used frequently and consistently during this thesis.}
+\setlength{\nomlabelwidth}{1.5cm}
+
+%% This code creates the groups in the nomenclature
+% -----------------------------------------
+\usepackage{ifthen}
+%\renewcommand\nomgroup[1]{%
+%	\item[\bfseries
+%	\ifstrequal{#1}{G}{General}{%
+%	\ifstrequal{#1}{LM}{Language Modelling}{%
+%	\ifstrequal{#1}{Multitask}{Multitask Learning}{%
+%	\ifstrequal{#1}{Meta}{Meta Learning}{}}}}%
+%	]}
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+	\item[\bfseries
+	\ifstrequal{#1}{G}{General}{%
+		\ifstrequal{#1}{L}{Language Modelling}{%
+			\ifstrequal{#1}{M}{Multitask Learning}{%
+				\ifstrequal{#1}{Z}{Meta Learning}{}}}}%
+	]}
+% -----------------------------------------
+
+% BIBTEX
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
+\addbibresource{BibTeX/MScThesis.bib}
+\defbibheading{secbib}[\bibname]{%
+	\section*{#1}%
+	\markboth{#1}{#1}}
+
+% TIKZ
+\usepackage{tikz}
+\usepackage{tikzsymbols}
+% Save some symbols we want to use as they intefere with the other packages
+\newsavebox\Abox
+\savebox\Abox{\Smiley[2]}
+\def\Smiley{\usebox\Abox}
+\newsavebox\Bbox
+\savebox\Bbox{\Neutrey[2]}
+\def\Neutrey{\usebox\Bbox}
+\newsavebox\Cbox
+\savebox\Cbox{\Sadey[2]}
+\def\Sadey{\usebox\Cbox}
+\newsavebox\Dbox
+\savebox\Dbox{\Vomey[4.5][green!80!black][olive]}
+\def\Chunny{\usebox\Dbox}
+\newsavebox\Ebox
+\savebox\Ebox{\dCooley[-5][cyan]}
+\def\Cooley{\usebox\Ebox}
+
+
+\usetikzlibrary{matrix, arrows, shapes}
+\tikzset{ 
+	table/.style={
+		matrix of nodes,
+		row sep=-\pgflinewidth,
+		column sep=-\pgflinewidth,
+		nodes={rectangle, align=center, text centered},
+		align=center, 
+		text centered,
+		text depth=4ex,
+		text height=2.5ex,
+		nodes in empty cells
+	},
+	row 1/.style={nodes={fill=green!10,text depth=0.4ex,text height=2ex}},
+	column 1/.style={nodes={fill=green!10, text width=20ex}},
+	column 2/.style={nodes={text width=70ex}},
+}
+\tikzset{log/.style={rectangle, draw, fill=black, text width=5em, text centered, rounded corners, minimum height=4em}}
+\tikzset{boldtext/.style={fill=LemonChiffon, font=\bfseries}}
+\tikzset{aspect/.style={circle, draw, fill=green!10, text width=5em, text centered, minimum height=4em}}
+\tikzset{sentiment/.style={circle, draw, fill=blue!10, text width=5.5em, text centered, minimum height=1em}}
+
+
+
+% MATHS
+%\newtheorem{theorem}{THEOREM}
+%\newtheorem{lemma}[theorem]{LEMMA}
+%\newtheorem{corollary}[theorem]{COROLLARY}
+%\newtheorem{proposition}[theorem]{PROPOSITION}
+%\newtheorem{remark}[theorem]{REMARK}
+%\newtheorem{definition}[theorem]{DEFINITION}
+%\newtheorem{fact}[theorem]{FACT}
+%
+%\newtheorem{problem}[theorem]{PROBLEM}
+%\newtheorem{exercise}[theorem]{EXERCISE}
+\usepackage{amsthm}
+\theoremstyle{Definition}
+\newtheorem{theorem}{theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem*{cor}{Corollary}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+\def \set#1{\{#1\} }
+
+%\newenvironment{proof}{
+%PROOF:
+%\begin{quotation}}{
+%$\Box$ \end{quotation}}
+
+
+% COMMAND OVERRIDES
+\newcommand{\N}{\mbox{\( \mathbb N \)}}
+\newcommand{\Q}{\mbox{\(\mathbb Q\)}}
+\newcommand{\R}{\mbox{\(\mathbb R\)}}
+\newcommand{\Z}{\mbox{\(\mathbb Z\)}}
+
+\renewcommand{\P}{\mbox{\(\mathbb P\)}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% GRAPHICS PATH
+\graphicspath{{images/}{images/background/}{images/methodology/}{images/experiments/}}
+
+% THESIS TITLE
+\title{  	{ \includegraphics[scale=.5]{ucl_logo.png}}\\
+{{\Huge \thesistitle}}\\
+{\large An investigation of optimal multitask schemas and generalisation for the automatic construction of Knowledge Graphs with focus on sentiment}\\
+		}
+\date{Submission date: \textbf{Day} September 2019}
+\author{Ryan Jenkinson\thanks{
+{\bf Disclaimer:}
+This report is submitted as part requirement for the Computational Statistics and Machine Learning MSc at UCL. It is substantially the result of my own work except where explicitly indicated in the text. The report may be freely copied and distributed provided the source is explicitly acknowledged}
+\\ \\
+Computational Statistics and Machine Learning MSc\ \\ \\
+Industry Supervisors: Dr Erik Mathiesen, Dr Ryan Garland \\
+Academic Supervisors: Prof. David Barber, Yap Pau Ching
+}
+
+\begin{document}
+\onehalfspacing
+\maketitle
+
+
+
+% DEDICATION
+\null\vspace {\stretch{1}}
+\begin{flushright}
+	To my parents, for their unwavering support in my ambitions.
+\end{flushright}
+\vspace{\stretch{2}}\null
+\thispagestyle{empty}
+\newpage
+
+\chapter*{Acknowledgements}
+\pagenumbering{gobble}
+Firstly, I'd like to thank the Machine Learning and Data Science team: Erik, Ryan, Sophia, James and Marina at Streetbees, for their continual encouragement and support throughout this thesis, and for adopting me as part of the team throughout the summer. Additional thanks go to Jeunghyun Byun, a fellow MSc student in Machine Learning, for his friendliness. Our discussions and meetings have given me valuable insight, and the emphasis on learning and development has been amazing. Secondly to Stanley, for his diligence and perseverance in helping me run my experiments. Thirdly, I'd like to thank my academic supervisor Yap Pau Ching, for her helpful discussions and keeping me on the right track. Finally, to my parents and family, my friends and long term partner, for their unwavering and continual support in all of my ambitions.
+
+\newpage
+% ABSTRACT
+\begin{abstract}
+In this thesis, we aim to investigate how multitask learning can affect the performance of Language Models on difficult downstream aspect based sentiment analysis tasks. We introduce novel task sampling schemas, and leverage dependent subtask hierarchies to fine tune our model jointly on several related tasks in order to regularise the learned embeddings and make them better generalisable to our main task. We report major improvements to the current state-of-the-art metrics, of over 2\% relative increase in some cases, showcasing the efficacy of these schemes. 
+
+Additionally, we propose a full investigation into how different language models learn, and in particular the importance of how the pretraining methodology can lead to representations which generalise better to complicated downstream tasks such as this.
+
+In order to generalise to new categories, we propose a novel application of Meta Learning to a Few Shot Text Classification regime, and outline how this could be implemented.
+\end{abstract}
+\newpage 
+
+% TABLE OF CONTENTS
+\pagenumbering{roman}
+\tableofcontents
+\newpage \cleardoublepage
+
+% LIST OF OTHER THINGS
+\addcontentsline{toc}{chapter}{Tables and Figures}
+\addcontentsline{toc}{section}{List of Tables}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\listoftables
+
+\newpage
+\addcontentsline{toc}{section}{List of Figures} 
+\listoffigures
+
+% NOMENCLATURE
+
+\mbox{}
+\printnomenclature
+\newpage
+
+% CHAPTER 1 - INTRODUCTION
+\input{chapters/introduction.tex} 
+\newpage \cleardoublepage
+
+% CHAPTER 2 - BACKGROUND
+\input{chapters/background.tex} 
+\newpage \cleardoublepage
+
+% CHAPTER 3 - METHODOLOGY
+\input{chapters/methodology.tex} 
+\newpage \cleardoublepage
+
+% CHAPTER 4 - EXPERIMENTS
+\input{chapters/experiments.tex} 
+\newpage \cleardoublepage
+
+% CHAPTER 5 - EXTENSIONS
+\input{chapters/extensions.tex} 
+\newpage \cleardoublepage
+
+\chapter{Conclusion}
+The contributions of this thesis are multiple: we gave a thorough and critical investigation of multitask learning using language models, as well as defining and experimented with novel sampling schemas that mimic human task solving methodologies which provably increase performance on difficult downstream language tasks, in particular ABSA tasks. We explored how auxilliary tasks can act as effective regularisers, and touched on some important discussion regarding how the pretraining of these language models (in particular the inclusion of a NLI task) effects downstream performance. 
+
+We conclude that sampling proportional to a subtask hierarchy is useful in achieving SOTA results on difficult downstream tasks, but these improvements are often small in terms of their relative increase. They might be useful in certain environments where the precision and/or recall of a system is important for an application, but the main benefits almost certainly reside in the quality of a base language model. To that end, we empirically show the importance of multitask pretraining objectives in language models, showing that despite XLNet's superiority on a range of NLP tasks such as the GLUE dataset, it fails to show the same performance increases over BERT for more complicated QA/NLI downstream tasks. Thus our recommendations are twofold: 
+\begin{enumerate}
+	\item The community needs a tougher benchmark for Language Model evaluation in terms of testing models on (a set of) more complicated downstream tasks
+	\item The community should further research the interplay between pretraining tasks and downstream performance on related downstream tasks. A good starting point is a full ablation study of ERNIE 2.0 \cite{Sun2019a}
+\end{enumerate}
+
+We agree with the literature in that multitask fine tuning enables the bottle to learn better, more regularised word representations allowing it to generalise better, and contribute a well commented, scalable library for continued experimentation by the research community into Multitask and Meta Learning for Language Models. We feel that this is important: the rapid rate of NLP progress leads to many new ideas being generated simultaneously, and the field would benefit from some thorough reviews and investigations into how best these transformer models learn as to direct future research. We hope this investigation provides a starting point for future work.
+
+In terms of a corporate environment, the amount of training time required as well as time taken to build these multitask systems might offer a negligible return compared to standard transfer learning/fine tuning approaches. Thus, while our approach has proved successful, the uptake in industry for multitask systems might be slow, although useful if the upmost accuracies are required. In terms of academic contexts, this investigation provides insight into how we can manipulate the representations of language models even after pretraining to better perform at tasks, and since the idea is inspired by humanity inspired pedagogical methods this suggests that these models can benefit from learning in similar ways that humans do.
+
+An important challenge in this space is how we generalise to new label categories, and so we outline a potential way to leverage cutting edge meta learning algorithms in order to learn more task generalisable word embeddings.
+
+% APPENDICES
+\appendix
+\chapter{Streetbees: A Company Profile \& Project Relevancy}
+\label{appendix:streetbees}
+% Redefine header since appendix name is too long
+\fancyhf{}
+\fancyhead[L]{\slshape\nouppercase{Appendix A: Streetbees}}
+\fancyhead[R]{\slshape\nouppercase{\thesistitle}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Streetbees is a start-up focused on market research for large brands, enabling them to get ``closer" to their consumer by conducting ``in-the-moment" surveys via a conversational chatbot-like app. These surveys are either generic, or client led, and ask users questions such as ``What are you eating?" and ``What do you like about the product?". By answering these surveys the users, referred to as \textit{bees}, get financial compensation. 
+
+The type of market research differs from traditional market research in two main ways: it asks for user feedback \textit{in the moment} i.e as they are consuming or buying the product (or immediately after), and ask about contextual factors that might motivate such a consumption or purchase; and they accept \textit{open text} responses to the questions, unlocking a potentially much richer data source than the constraints imposed by traditional multiple choice answers.
+
+Since the company was founded in 2015, they have amassed a large dataset of close to 3 billion unique datapoints, in over 12 geographies, that capture human interaction with consumer products in the market, but also, more profoundly, form a representation of human behaviour: the underlying contextual motivating factors between purchasing decisions and buying habits. This enables them to give insights to their consumers, such as identifying previously undescovered market segmentations via clustering like the identification of a ``gamer snack" group in America - a large selection of the snack market that was previously untapped, a Streetbees survey identified the market requirement for healthy, non greasy foods compatible with gamers. 
+
+The company intends to build a knowledge graph, representing the relationship between brands, their product portfolios and humans where the nodes are user ``logs" and the relations include links to the product (and brand) nodes mentioned in the log. Additional attributes will include how the person was feeling (sentiment) when using/consuming said product, and motivating reasons why. With attributes like this, we can perform powerful link prediction on this graph across contextual elements, contrary to the traditional demographic factor approach.
+
+This project directly relates to the sentiment relations/nodes of the graph, and generalises the notion of how the person was feeling overall during the log to specifically. The methodologies developed in this thesis couple with this goal since it provides a robust framework for the improvement of the ABSA task, enabling knowledge graphs to be build that correctly identify user sentiment on a more granular level, specifically regarding particular aspects of products. The hope is that these models can soon generalise to entirely new, client driven, aspects as previously unseen during the training phase. This is a novel application of cutting edge NLP that is explored in this document.
+
+The company has applied this NLP technology in a variety of applications: Mood prediction, Food prediction \textbf{talk more here? Move to beginning of thesis?}
+
+\chapter{Additional Findings} \label{appendix:additionalfindings}
+
+\chapter{Code listings} \label{appendix:code}
+Some code here or something
+
+\newpage
+\addcontentsline{toc}{chapter}{References}
+\chapter*{References}
+\printbibliography[notkeyword={multitask}, notkeyword={meta}, title={General}, heading=secbib]
+\printbibliography[keyword={multitask}, title={Multitask Learning}, heading=secbib]
+\printbibliography[keyword={meta}, title={Meta Learning}, heading=secbib]
+
+
+\end{document}

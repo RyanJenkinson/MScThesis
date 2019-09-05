@@ -1,0 +1,36 @@
+
+\begin{thenomenclature} 
+\nomgroup{G}
+  \item [{$\mathcal{A}$}]\begingroup A set of aspect categories for the (T)ABSA tasks\nomeqref {2.1}\nompageref{42}
+  \item [{$\mathcal{D}$}]\begingroup A dataset\nomeqref {1.0}\nompageref{13}
+  \item [{$\P$}]\begingroup A probability distribution\nomeqref {1.0}\nompageref{13}
+  \item [{(T)ABSA}]\begingroup (Target) Aspect Based Sentiment Analysis\nomeqref {1.0}\nompageref{13}
+  \item [{document}]\begingroup A general term referring to a piece of text, which may be a single sentence, word or paragraph.\nomeqref {0}\nompageref{7}
+  \item [{GLUE}]\begingroup General Language Understanding Evaluation benchmark - a common set of tasks for which we train, evaluate and analyse NLU systems\nomeqref {1.0}\nompageref{13}
+  \item [{LM}]\begingroup Language Model\nomeqref {1.0}\nompageref{13}
+  \item [{LSTM}]\begingroup Long Short Term Memory (Network/Architecture)\nomeqref {1.0}\nompageref{13}
+  \item [{ML}]\begingroup Machine Learning\nomeqref {0}\nompageref{7}
+  \item [{NER}]\begingroup Named Entity Recognition\nomeqref {1.0}\nompageref{13}
+  \item [{NLI}]\begingroup Natural Language Inference - e.g similarity of two sentences or next sentence prediction task\nomeqref {1.0}\nompageref{13}
+  \item [{NLP}]\begingroup Natural Language Processing\nomeqref {0}\nompageref{7}
+  \item [{NLU}]\begingroup Natural Language Understanding\nomeqref {1.0}\nompageref{13}
+  \item [{PoS}]\begingroup Part of Speech\nomeqref {2.1}\nompageref{42}
+  \item [{QA}]\begingroup Question Answering\nomeqref {1.0}\nompageref{13}
+  \item [{RNN}]\begingroup Recurrent Neural Network\nomeqref {1.0}\nompageref{13}
+  \item [{SOTA}]\begingroup State of the Art\nomeqref {1.0}\nompageref{13}
+  \item [{Support}]\begingroup We adopt the mathematical definition of support: the number of nonzero points in a domain. In our case, it will refer to the number of instances of examples.\nomeqref {1.0}\nompageref{13}
+\nomgroup{L}
+  \item [{BERT}]\begingroup Bidirectional Encoder Representation using Transformers\nomeqref {0}\nompageref{7}
+  \item [{ELMo}]\begingroup Embeddings from Language Models\nomeqref {1.0}\nompageref{13}
+  \item [{GPT}]\begingroup Generalised Pre Training\nomeqref {1.0}\nompageref{13}
+  \item [{RoBERTa}]\begingroup Robustly optimised BERT approach\nomeqref {1.0}\nompageref{13}
+\nomgroup{M}
+  \item [{$\mathcal{T}$}]\begingroup A set of tasks, typically $\mathcal{T} = \{\tau_1, \dots, \tau_n\}$ where $\tau_i$ is task $i$.\nomeqref {0}\nompageref{7}
+  \item [{$p(\mathcal{T})$}]\begingroup Probability distribution over our tasks. This is our notation for our sampling schema/distribution.\nomeqref {3.0}\nompageref{49}
+  \item [{$w_{\tau_i}$}]\begingroup The weight of task $\tau_i \in \mathcal{T}$. The sampling distributions are proportional to this weight.\nomeqref {3.0}\nompageref{49}
+\nomgroup{Z}
+  \item [{$\mathcal{Q}$}]\begingroup Query Set\nomeqref {1.0}\nompageref{13}
+  \item [{$\mathcal{S}$}]\begingroup Support Set\nomeqref {1.0}\nompageref{13}
+  \item [{$\mathcal{T}$}]\begingroup A set of tasks, typically $\mathcal{T} = \{\tau_1, \dots, \tau_n\}$ where $\tau_i$ is task $i$.\nomeqref {0}\nompageref{7}
+
+\end{thenomenclature}
