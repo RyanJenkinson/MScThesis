@@ -100,9 +100,10 @@ Like multitask learning, meta learning frameworks act as effective regularisers,
 \section{Project Aims \& Our Contributions} \label{section:intro:projectaims}
 The primary aim of this project is to investigate the role of multitask learning applied to Language Models for Aspect Based Sentiment Analysis (ABSA) focusing in particular on:
 \begin{itemize}
-	\item The role of primary and auxilliary tasks in the training procedure, and identifying suitable secondary subtasks that improve performance in the primary task (ABSA)
+	\item The role of primary and auxilliary tasks in the training procedure, and identifying suitable secondary subtasks that improve performance in the primary task (ABSA) when fine tuning.
 	\item How the training procedure influences performance. We do this by defining some novel task sampling schemas (as per Section \ref{section:methodology:taskdistributions}) and investigating their effect on the key metrics.
-	\item Investigate the generalisation capability of these systems to previously unseen aspects, including the  introduction a novel application of meta learning to language models for generalising to unseen aspects and comparing this to a lifelong multitask learning approach.
+	\item Conduct a sub-investigation into the role of pretraining tasks used in new transformer based language modelling architectures in terms of their performance on the ABSA task
+	\item Look at the generalisation capability of these systems to previously unseen aspects, including the  introduction a novel application of meta learning to language models for generalising to unseen aspects and comparing this to a multitask learning approach.
 	\item To provide a consistent, open source implementation, of multitask and meta learners applied to language models for the benefit of the research community.
 \end{itemize}
 
@@ -123,7 +124,7 @@ More information on the company and project relevancy can be found in Appendix \
 \label{section:intro:code}
 The code accompanying this thesis has been made freely available online via GitHub at:
  \begin{center}
- \href{www.github.com/RyanJenkinson}{\texttt{www.github.com/RyanJenkinson}}.
+ \href{www.github.com/RyanJenkinson/MScThesis}{\texttt{www.github.com/RyanJenkinson/MScThesis}}.
  \end{center}
 In this repository, you can find the library with all of the code, which we have named \texttt{TraMML} - Transformers with Multitask and Meta Learning - as well as this thesis, and all accompanying papers and images. More information regarding specific code implementation and how to run sections of the library can be found in Appendix \ref{appendix:code} or in the \texttt{TraMML} README.
 

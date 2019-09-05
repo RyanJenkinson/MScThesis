@@ -2625,7 +2625,7 @@
       \verb 1903.09588v1
       \endverb
       \verb{file}
-      \verb :Users/ryanjenkinson/Library/Application Support/Mendeley Desktop/Downloaded/Sun, Huang, Qiu - 2019 - Utilizing BERT for Aspect-Based Sentiment Analysis via Constructing Auxiliary Sentence.pdf:pdf
+      \verb :Users/ryanjenkinson/Documents/MSc Project/LaTeX Project/papers/Sun, Huang, Qiu - 2019 - Utilizing BERT for Aspect-Based Sentiment Analysis via Constructing Auxiliary Sentence.pdf:pdf
       \endverb
     \endentry
     \entry{Parisi2018}{article}{}
@@ -3245,52 +3245,60 @@
       \endverb
       \keyw{meta}
     \endentry
-    \entry{Yu}{report}{}
-      \name{author}{4}{}{%
-        {{hash=895459f795b2530f8583442ac07ff7c5}{%
-           family={Yu},
-           familyi={Y\bibinitperiod},
-           given={Mo},
-           giveni={M\bibinitperiod}}}%
-        {{hash=755a7561cf689c79634b3b170450d6b1}{%
-           family={Guo},
-           familyi={G\bibinitperiod},
-           given={Xiaoxiao},
-           giveni={X\bibinitperiod}}}%
-        {{hash=4ca7d16eca3f24b096742925b9bd1fcf}{%
-           family={Yi},
-           familyi={Y\bibinitperiod},
-           given={Jinfeng},
-           giveni={J\bibinitperiod}}}%
-        {{hash=7c339d439c3b9a5e848db7f8b765f9fa}{%
-           family={{Chang Saloni Potdar Yu Cheng Gerald Tesauro Haoyu Wang Bowen Zhou}},
-           familyi={C\bibinitperiod},
-           given={Shiyu},
+    \entry{Zhang2019}{report}{}
+      \name{author}{5}{}{%
+        {{hash=90aeaf66eddc7036841c700ccf9f5361}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Ningyu},
+           giveni={N\bibinitperiod}}}%
+        {{hash=312e826302a9022897f31963760555b5}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Zhanlin},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=17cb5f39e75e54113cdf0eaa8f846568}{%
+           family={Deng},
+           familyi={D\bibinitperiod},
+           given={Shumin},
            giveni={S\bibinitperiod}}}%
+        {{hash=0b87df665e2130d062fa745039974f04}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Jiaoyan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=824b2f383c5e03f7427dc3096f342870}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Huajun},
+           giveni={H\bibinitperiod}}}%
       }
-      \strng{namehash}{2415636b261f6657cdbd8fcb9857dd54}
-      \strng{fullhash}{d8d32109676fdc257bc9431a7db2c094}
-      \strng{bibnamehash}{2415636b261f6657cdbd8fcb9857dd54}
-      \strng{authorbibnamehash}{2415636b261f6657cdbd8fcb9857dd54}
-      \strng{authornamehash}{2415636b261f6657cdbd8fcb9857dd54}
-      \strng{authorfullhash}{d8d32109676fdc257bc9431a7db2c094}
+      \strng{namehash}{28f35fd9e177711d22cf68f24ca6da4e}
+      \strng{fullhash}{17e86f41ab85acd11d9e2ce78220607c}
+      \strng{bibnamehash}{28f35fd9e177711d22cf68f24ca6da4e}
+      \strng{authorbibnamehash}{28f35fd9e177711d22cf68f24ca6da4e}
+      \strng{authornamehash}{28f35fd9e177711d22cf68f24ca6da4e}
+      \strng{authorfullhash}{17e86f41ab85acd11d9e2ce78220607c}
       \field{sortinit}{1}
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{We study few-shot learning in natural language domains. Compared to many existing works that apply either metric-based or optimization-based meta-learning to image domain with low inter-task variance, we consider a more realistic setting, where tasks are diverse. However, it imposes tremendous difficulties to existing state-of-the-art metric-based algorithms since a single metric is insufficient to capture complex task variations in natural language domain. To alleviate the problem , we propose an adaptive metric learning approach that automatically determines the best weighted combination from a set of met-rics obtained from meta-training tasks for a newly seen few-shot task. Extensive quantitative evaluations on real-world sentiment analysis and dialog intent classification datasets demonstrate that the proposed method performs favorably against state-of-the-art few shot learning algorithms in terms of predictive accuracy. We make our code and data available for further study. 1}
-      \field{title}{{Diverse Few-Shot Text Classification with Multiple Metrics}}
+      \field{abstract}{Text classification tends to be difficult when the data is deficient or when it is required to adapt to unseen classes. In such challenging scenarios, recent studies have often used meta-learning to simulate the few-shot task, thus negating explicit common linguistic features across tasks. Deep language representations have proven to be very effective forms of unsupervised pretraining, yielding contextual-ized features that capture linguistic properties and benefit downstream natural language understanding tasks. However, the effect of pretrained language representation for few-shot learning on text classification tasks is still not well understood. In this study, we design a few-shot learning model with pretrained language representations and report the empirical results. We show that our approach is not only simple but also produces state-of-the-art performance on a well-studied sentiment classification dataset. It can thus be further suggested that pretraining could be a promising solution for few shot learning of many other NLP tasks. The code and the dataset to replicate the experiments are made available at https://github.com/zxlzr/FewShotNLP.}
+      \field{eprinttype}{arXiv}
+      \field{title}{{Improving Few-shot Text Classification via Pretrained Language Representations}}
       \field{type}{techreport}
-      \field{pages}{1206\bibrangedash 1215}
-      \range{pages}{10}
+      \field{year}{2019}
+      \verb{eprint}
+      \verb 1908.08788v1
+      \endverb
       \verb{file}
-      \verb :Users/ryanjenkinson/Documents/MSc Project/LaTeX Project/papers/Yu et al. - Unknown - Diverse Few-Shot Text Classification with Multiple Metrics.pdf:pdf
+      \verb :Users/ryanjenkinson/Documents/MSc Project/LaTeX Project/papers/Zhang et al. - 2019 - Improving Few-shot Text Classification via Pretrained Language Representations.pdf:pdf
       \endverb
       \verb{urlraw}
-      \verb https://github.com/Gorov/DiverseFewShot{\_}Amazon
+      \verb https://github.com/Gorov/DiverseFewShot
       \endverb
       \verb{url}
-      \verb https://github.com/Gorov/DiverseFewShot%7B%5C_%7DAmazon
+      \verb https://github.com/Gorov/DiverseFewShot
       \endverb
       \keyw{meta}
     \endentry

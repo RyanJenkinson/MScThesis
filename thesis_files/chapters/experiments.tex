@@ -6,7 +6,7 @@
 % ------------------------------------------------
 \chapter{Experiments \& Results} \label{chapter:experiments}
 
-In this section, we focus on the experiments we ran to validate or disprove our hypothesis: sampling tasks according to an importance subtask hierarchy and utilising multitask learning will improve performance over both multitask learning alone and regular fine tuning/transfer learning. The reader is referred to Section \ref{section:methodology:taskdistributions} for an outline of our sampling schemas. We begin with our core experimental results showcasing performance on the ABSA task we are interested in, and supplement this with preliminary and additional experiments that we ran. We wanted to run our experiments over various model architectures, as described in Section \ref{section:experiments:languagemodels} to additionally test the importance of the Next Sentence Prediction pretraining task, that is currently not well understood by the community, as mentioned in Section \ref{section:experiments:nlipretrainingimportance}. \textbf{Write more when done}
+In this section, we focus on the experiments we ran to validate or disprove our hypothesis: sampling tasks according to an importance subtask hierarchy and utilising multitask learning will improve performance over both multitask learning alone and regular fine tuning/transfer learning. The reader is referred to Section \ref{section:methodology:taskdistributions} for an outline of our sampling schemas. We begin with our core experimental results showcasing performance on the ABSA task we are interested in, and supplement this with preliminary and additional experiments that we ran. We wanted to run our experiments over various model architectures, as described in Section \ref{section:experiments:languagemodels} to additionally test the importance of the Next Sentence Prediction pretraining task, that is currently not well understood by the community, as mentioned in Section \ref{section:experiments:nlipretrainingimportance}. We conclude this section with specific training choices that we made, so that the interested reader can replicate the results we show below.
 
 \section{Base Language Model Choices} \label{section:experiments:languagemodels}
 As eluded to in Section \ref{section:background:LMs}, we will be utilising the current SOTA language models, namely BERT and XLNet. Due to computational considerations (see Section \ref{section:experiments:compute}), we decided to use the base language models with the fewest parameters in each case. This corresponds to models \texttt{bert-base-uncased} and \texttt{xlnet-base-cased}. The models are described in Sections \ref{section:background:bert} and \ref{section:background:xlnet} respectively, and casing is defined in Section \ref{section:background:casing}.
@@ -53,7 +53,7 @@ As mentioned in Section \ref{section:experiments:nlipretrainingimportance}, we e
 
 We additionally find that each of the top 5 performing models for binary classification for each of the model classes use the sampling schemas we defined in this thesis as opposed to just sequential sampling, thereby validating the importance of defining these schemas. We report relative improvements in an already high SOTA accuracy score of greater than 1\% in the best case. This can be seen in Table \ref{table:experiments:semevalresults}.
 
-Where this multitask learning seems to improve results is in the much harsher metrics. We find that an \texttt{xlnet-base-cased} model fine tuning with tasks \{SST-2, NER, SemEval\_QA\_B\} using the square sampling schema achieves a 4 way accuracy of 0.8839, which is a 0.02 absolute improvement on this metric and an impressive 2.9\% relative increase on SOTA. It seems that these alternative representations enable the model to better classify classes with fewer labels in the dataset (since there is a severe label imbalance for the ``neutral" and ``conflict" classes), probably since the model does not overfit and learn to optimise just the two label setting, but instead favouring hypotheses that generalise well amongst all tasks (relating back to our discussion in Section \ref{section:background:multitask}, where the tasks act as regularisers for the model).
+Where this multitask learning seems to improve results is in the much harsher metrics. We find that an \texttt{xlnet-base-cased} model fine tuning with tasks \{SST-2, PoS, SemEval\_QA\_B\} using the square sampling schema achieves a 4 way accuracy of 0.8839, which is a 0.02 absolute improvement on this metric and an impressive 2.9\% relative increase on SOTA. It seems that these alternative representations enable the model to better classify classes with fewer labels in the dataset (since there is a severe label imbalance for the ``neutral" and ``conflict" classes), probably since the model does not overfit and learn to optimise just the two label setting, but instead favouring hypotheses that generalise well amongst all tasks (relating back to our discussion in Section \ref{section:background:multitask}, where the tasks act as regularisers for the model).
 
 We see that, from Figure \ref{fig:experiments:semevalprf}, when considering Precision, Recall and F1 Scores, in general we see that \texttt{bert-base-uncased} actually performs better than XLNet in terms of beating the SOTA scores. We also conjecture this is due to the importance of the NLI pretraining task.
 
@@ -63,16 +63,16 @@ We see that, from Figure \ref{fig:experiments:semevalprf}, when considering Prec
 			\toprule
 			Model Name &                                     Tasks & Sampling Mode &  Test Acc. (2 Class) & Absolute Increase to SOTA & Relative Increase to SOTA \\
 			\midrule
-			\multirow{5}{*}{bert-base-uncased} &         NER, SemEval\_QA\_B, Sentihood\_QA\_B &        anneal &                        0.963595 &                      0.01 &                     0.79\% \\
-			&                  SST-2, NER, SemEval\_QA\_B &          sqrt &                        0.962457 &                      0.01 &                     0.68\% \\
-			&  SST-2, NER, SemEval\_QA\_B, Sentihood\_QA\_B &          prop &                        0.960182 &                       0.0 &                     0.44\% \\
+			\multirow{5}{*}{bert-base-uncased} &         PoS, SemEval\_QA\_B, Sentihood\_QA\_B &        anneal &                        0.963595 &                      0.01 &                     0.79\% \\
+			&                  SST-2, PoS, SemEval\_QA\_B &          sqrt &                        0.962457 &                      0.01 &                     0.68\% \\
+			&  SST-2, PoS, SemEval\_QA\_B, Sentihood\_QA\_B &          prop &                        0.960182 &                       0.0 &                     0.44\% \\
 			&                       SST-2, SemEval\_QA\_B &          prop &                        0.959044 &                       0.0 &                     0.32\% \\
 			&       SST-2, SemEval\_QA\_B, Sentihood\_QA\_B &          prop &                        0.959044 &                       0.0 &                     0.32\% \\
 			\hline
-			\multirow{5}{*}{xlnet-base-cased}  &                  SST-2, NER, SemEval\_QA\_B &        square &                        0.965870 &                      0.01 &                     1.03\% \\
-			&                  SST-2, NER, SemEval\_QA\_B &        anneal &                        0.962457 &                      0.01 &                     0.68\% \\
+			\multirow{5}{*}{xlnet-base-cased}  &                  SST-2, PoS, SemEval\_QA\_B &        square &                        0.965870 &                      0.01 &                     1.03\% \\
+			&                  SST-2, PoS, SemEval\_QA\_B &        anneal &                        0.962457 &                      0.01 &                     0.68\% \\
 			&       SST-2, SemEval\_QA\_B, Sentihood\_QA\_B &        anneal &                        0.961320 &                      0.01 &                     0.56\% \\
-			&                  SST-2, NER, SemEval\_QA\_B &          prop &                        0.959044 &                       0.0 &                     0.32\% \\
+			&                  SST-2, PoS, SemEval\_QA\_B &          prop &                        0.959044 &                       0.0 &                     0.32\% \\
 			&       SST-2, SemEval\_QA\_B, Sentihood\_QA\_B &          prop &                        0.959044 &                       0.0 &                     0.32\% \\
 			\bottomrule
 	\end{tabular}}
@@ -94,9 +94,9 @@ We see that, from Figure \ref{fig:experiments:semevalprf}, when considering Prec
 		F1\_Score                         &        0.9218 &              0.922926 &       BERT & SST-2, SemEval\_QA\_B (random) \\
 		Precision                        &        0.9315 &              0.938071 &         BERT & SST-2, SemEval\_QA\_B (prop) \\
 		Recall                           &        0.9083 &              0.917073 &       BERT & SST-2, SemEval\_QA\_B (random) \\
-		2 Class Accuracy  &        0.9560 &               0.96587 &  XLNet & SST-2, NER, SemEval\_QA\_B (square) \\
-		3 Class Accuracy   &        0.8990 &              0.920863 &  XLNet & SST-2, NER, SemEval\_QA\_B (square) \\
-		4 Class Accuracy   &        0.8590 &              0.883902 &  XLNet & SST-2, NER, SemEval\_QA\_B (square) \\
+		2 Class Accuracy  &        0.9560 &               0.96587 &  XLNet & SST-2, PoS, SemEval\_QA\_B (square) \\
+		3 Class Accuracy   &        0.8990 &              0.920863 &  XLNet & SST-2, PoS, SemEval\_QA\_B (square) \\
+		4 Class Accuracy   &        0.8590 &              0.883902 &  XLNet & SST-2, PoS, SemEval\_QA\_B (square) \\
 		\bottomrule
 	\end{tabular}}
 	\resizebox{\textwidth}{!}{
@@ -131,7 +131,7 @@ The main company dataset we will be considering is the question \textit{``How do
 			\toprule
 			& Model Name &   Tasks & Sampling Mode &  Precision & Recall & $F_1$ Score \\
 			\midrule
-			\multirow{2}{*}{Best Performing ($F_1$ Score)} &         \texttt{bert-base-uncased} &	SST-2, NER, SemEval\_QA\_B, Streetbees\_Mood	& prop	& 0.910938	& 0.917683	& 0.914298 \\
+			\multirow{2}{*}{Best Performing ($F_1$ Score)} &         \texttt{bert-base-uncased} &	SST-2, PoS, SemEval\_QA\_B, Streetbees\_Mood	& prop	& 0.910938	& 0.917683	& 0.914298 \\
 			&  \texttt{xlnet-base-cased}	& SST-2, Streetbees\_Mood	& prop	& 0.900042	& 0.923563	& 0.911651 \\
 			\hline
 			\multirow{2}{*}{Baseline (Fine tuning, single task)}  & \texttt{bert-base-uncased}	& Streetbees\_Mood	& sequential	& 0.901068	& 0.918336	& 0.909620 \\

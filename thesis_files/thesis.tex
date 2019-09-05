@@ -178,7 +178,7 @@
 {{\Huge \thesistitle}}\\
 {\large An investigation of optimal multitask schemas and generalisation for the automatic construction of Knowledge Graphs with focus on sentiment}\\
 		}
-\date{Submission date: \textbf{Day} September 2019}
+\date{Submission date: 6 September 2019}
 \author{Ryan Jenkinson\thanks{
 {\bf Disclaimer:}
 This report is submitted as part requirement for the Computational Statistics and Machine Learning MSc at UCL. It is substantially the result of my own work except where explicitly indicated in the text. The report may be freely copied and distributed provided the source is explicitly acknowledged}
@@ -210,11 +210,11 @@ Firstly, I'd like to thank the Machine Learning and Data Science team: Erik, Rya
 \newpage
 % ABSTRACT
 \begin{abstract}
-In this thesis, we aim to investigate how multitask learning can affect the performance of Language Models on difficult downstream aspect based sentiment analysis tasks. We introduce novel task sampling schemas, and leverage dependent subtask hierarchies to fine tune our model jointly on several related tasks in order to regularise the learned embeddings and make them better generalisable to our main task. We report major improvements to the current state-of-the-art metrics, of over 2\% relative increase in some cases, showcasing the efficacy of these schemes. 
+In this thesis, we aim to investigate how multitask learning can affect the performance of Language Models on difficult downstream aspect based sentiment analysis tasks. We introduce novel task sampling schemas, and leverage dependent subtask hierarchies to fine tune our model jointly on several related tasks in order to regularise the learned embeddings and enabling them to generalise better to our main task. We report major improvements to the current state-of-the-art metrics, of over 2\% relative increase in some cases, showcasing the efficacy of these schemes. 
 
-Additionally, we propose a full investigation into how different language models learn, and in particular the importance of how the pretraining methodology can lead to representations which generalise better to complicated downstream tasks such as this.
+Additionally, we conduct an investigation into how different language models learn, and in particular the importance of how the pretraining methodology can lead to representations which generalise better to complicated downstream tasks such as this.
 
-In order to generalise to new categories, we propose a novel application of Meta Learning to a Few Shot Text Classification regime, and outline how this could be implemented.
+In order to generalise to new categories, we propose a novel application of Meta Learning to a Few Shot Text Classification regime, and outline how this could be implemented, drawing on the recent literature.
 \end{abstract}
 \newpage 
 
@@ -263,17 +263,21 @@ In order to generalise to new categories, we propose a novel application of Meta
 \chapter{Conclusion}
 The contributions of this thesis are multiple: we gave a thorough and critical investigation of multitask learning using language models, as well as defining and experimented with novel sampling schemas that mimic human task solving methodologies which provably increase performance on difficult downstream language tasks, in particular ABSA tasks. We explored how auxilliary tasks can act as effective regularisers, and touched on some important discussion regarding how the pretraining of these language models (in particular the inclusion of a NLI task) effects downstream performance. 
 
-We conclude that sampling proportional to a subtask hierarchy is useful in achieving SOTA results on difficult downstream tasks, but these improvements are often small in terms of their relative increase. They might be useful in certain environments where the precision and/or recall of a system is important for an application, but the main benefits almost certainly reside in the quality of a base language model. To that end, we empirically show the importance of multitask pretraining objectives in language models, showing that despite XLNet's superiority on a range of NLP tasks such as the GLUE dataset, it fails to show the same performance increases over BERT for more complicated QA/NLI downstream tasks. Thus our recommendations are twofold: 
+We conclude that sampling proportional to a subtask hierarchy is useful in achieving SOTA results on difficult downstream tasks, but these improvements are often small in terms of their relative increase. Nonetheless, in our tests 70\% of the metrics that we improved SOTA on sample proportional to the pedagogically motivated structure we defined.
+
+Running experiments over all sampling schemas can be computationally expensive, but these sampling schemas might be useful in certain environments where the precision and/or recall of a system is important for an application, and thus every increase in these metrics is important, but the main benefits almost certainly reside in the quality of a base language model. To that end, we empirically show the importance of multitask pretraining objectives in language models, showing that despite XLNet's superiority on a range of NLP tasks such as the GLUE dataset, it fails to show the same performance increases over BERT for more complicated QA/NLI downstream tasks. Thus our recommendations are twofold: 
 \begin{enumerate}
 	\item The community needs a tougher benchmark for Language Model evaluation in terms of testing models on (a set of) more complicated downstream tasks
 	\item The community should further research the interplay between pretraining tasks and downstream performance on related downstream tasks. A good starting point is a full ablation study of ERNIE 2.0 \cite{Sun2019a}
 \end{enumerate}
 
-We agree with the literature in that multitask fine tuning enables the bottle to learn better, more regularised word representations allowing it to generalise better, and contribute a well commented, scalable library for continued experimentation by the research community into Multitask and Meta Learning for Language Models. We feel that this is important: the rapid rate of NLP progress leads to many new ideas being generated simultaneously, and the field would benefit from some thorough reviews and investigations into how best these transformer models learn as to direct future research. We hope this investigation provides a starting point for future work.
+We agree with the literature in that multitask fine tuning enables the model to learn better, more regularised word representations allowing it to generalise better, and contribute a well commented, scalable library for continued experimentation by the research community into Multitask and Meta Learning for Language Models: \texttt{TraMML}. We feel that this is important: the rapid rate of NLP progress leads to many new ideas being generated simultaneously, and the field would benefit from some thorough reviews and investigations into how best these transformer models learn as to direct future research. We hope this investigation provides a starting point for future work.
 
 In terms of a corporate environment, the amount of training time required as well as time taken to build these multitask systems might offer a negligible return compared to standard transfer learning/fine tuning approaches. Thus, while our approach has proved successful, the uptake in industry for multitask systems might be slow, although useful if the upmost accuracies are required. In terms of academic contexts, this investigation provides insight into how we can manipulate the representations of language models even after pretraining to better perform at tasks, and since the idea is inspired by humanity inspired pedagogical methods this suggests that these models can benefit from learning in similar ways that humans do.
 
 An important challenge in this space is how we generalise to new label categories, and so we outline a potential way to leverage cutting edge meta learning algorithms in order to learn more task generalisable word embeddings.
+
+We hope that this thesis and code library provides a springboard for future research and understanding into how best these transformers learn, and the best way to pretrain and finetune these models to perform well on complicated downstream tasks, such as the ABSA tasks.
 
 % APPENDICES
 \appendix
@@ -296,12 +300,47 @@ The company intends to build a knowledge graph, representing the relationship be
 
 This project directly relates to the sentiment relations/nodes of the graph, and generalises the notion of how the person was feeling overall during the log to specifically. The methodologies developed in this thesis couple with this goal since it provides a robust framework for the improvement of the ABSA task, enabling knowledge graphs to be build that correctly identify user sentiment on a more granular level, specifically regarding particular aspects of products. The hope is that these models can soon generalise to entirely new, client driven, aspects as previously unseen during the training phase. This is a novel application of cutting edge NLP that is explored in this document.
 
-The company has applied this NLP technology in a variety of applications: Mood prediction, Food prediction \textbf{talk more here? Move to beginning of thesis?}
+The company has applied this NLP technology in a variety of applications including Mood prediction and food prediction, and is working to synergise these models with an additional vision model for images, thereby creating a multimodal image-text system. Additionally, the company is working on an NER tagger, to which we can apply the TABSA methodologies described in this paper to augment their knowledge graph functionalities in terms of understanding fine grained aspect based sentiment of user logs towards specific brands and/or their products in the way we described previously.
+
+The meta learning framework we proposed is also of use to the company, since it aligns with a clients dynamic requirement scheme: wanting to understand how users feel about new aspects of their product portfolios such as sustainability. 
 
 \chapter{Additional Findings} \label{appendix:additionalfindings}
-
+In this section we plot some additional graphs that are not discussed in major detail in the main text. In particular, we plot the TABSA results. They are not discussed in major detail since we believe the $F_1$ score has been misreported in the literature, since we massively outperform it. In terms of the Strict Accuracy and AUC, we also beat SOTA on these metrics as referenced in Table \ref{table:experiments:sotaresults} but some of the TABSA metrics do not have reported SOTA values, so we exclude the results from our experiments section.
+\begin{figure}
+	\includegraphics[width=\textwidth]{SentihoodResults.pdf}
+	\captionof{figure}{Sentihood Metric Results for Strict Accuracy, and the AUC metrics}
+	\label{fig:experiments:sentihoodresults}
+\end{figure}
+\begin{figure}
+	\includegraphics[width=\textwidth]{SentihoodResults2.pdf}
+	\captionof{figure}{Sentihood Metric Results for Precision, Recall and $F_1$ Score. We believe the SOTA $F_1$ score is misreported in the literature.}
+	\label{fig:experiments:sentihoodresults}
+\end{figure}
 \chapter{Code listings} \label{appendix:code}
-Some code here or something
+We fully open source all the material in this project at:
+ \begin{center}
+	\href{www.github.com/RyanJenkinson/MScThesis}{\texttt{www.github.com/RyanJenkinson/MScThesis}}.
+\end{center}
+In this, we introduce the library \texttt{TraMML}: Transformers using Multitask and Meta Learning. We can easily use this library to normally fine tune or joint multitask fine tune onto any task by following instructions in the README of the library. It is easily configurable, by changing the \texttt{configs/run\_config.json} file that is called by \texttt{learners.py}. The quickest way to check the code implementation is to run \texttt{python learners.py} once you have installed the \texttt{requirements.txt} file.
+
+Additionally, you can set up experiments to run by calling the \texttt{ExperimentRunner} class in \texttt{run\_experiments.py}.
+
+Every dataset has been prepared in a consistent format, as shown in the table below. The \texttt{text\_b} column is optional, and used for the (T)ABSA tasks due to the Auxilliary Sentence Construction methodology \cite{Sun2019}. For the PoS task, the label is a list of labels.
+
+\begin{center}
+	\begin{tabular}{||c |c|c| c||} 
+		\hline
+		\texttt{id} & \texttt{text\_a} & \texttt{text\_b} & \texttt{label}  \\
+		\hline\hline
+		0 & $\vdots$ & $\vdots$ & $\vdots$ \\ 
+		\hline
+		1 & $\vdots$ & $\vdots$ & $\vdots$ \\ 
+	\end{tabular}
+	\captionof{table}{The standardised format of each input dataset as a \texttt{.csv}}
+	\label{table:appendix:datasetformat}
+\end{center}
+
+To enter a new task, simply prepare the dataset in this format, add a \texttt{DataProcessor} object in \texttt{data\_processing.py} and add this to the \texttt{PROCESSORS} dictionary. Then, it is imported into the rest of the library.
 
 \newpage
 \addcontentsline{toc}{chapter}{References}

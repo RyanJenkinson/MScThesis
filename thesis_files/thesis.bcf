@@ -2110,7 +2110,7 @@
     <bcf:citekey order="119">Chen2018</bcf:citekey>
     <bcf:citekey order="120">Finn2017</bcf:citekey>
     <bcf:citekey order="121">Gu</bcf:citekey>
-    <bcf:citekey order="122">Yu</bcf:citekey>
+    <bcf:citekey order="122">Zhang2019</bcf:citekey>
     <bcf:citekey order="123">Kiritchenko2014</bcf:citekey>
     <bcf:citekey order="124">Sun2019</bcf:citekey>
     <bcf:citekey order="125">Sun2019</bcf:citekey>
@@ -2138,9 +2138,10 @@
     <bcf:citekey order="142">Devlin2018</bcf:citekey>
     <bcf:citekey order="143">Kuleshov2000</bcf:citekey>
     <bcf:citekey order="144">Szegedy</bcf:citekey>
-    <bcf:citekey order="145">Yu</bcf:citekey>
+    <bcf:citekey order="145">Zhang2019</bcf:citekey>
     <bcf:citekey order="146">Nichol</bcf:citekey>
     <bcf:citekey order="147">Sun2019a</bcf:citekey>
+    <bcf:citekey order="148">Sun2019</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

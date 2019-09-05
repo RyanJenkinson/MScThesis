@@ -218,6 +218,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {B}Additional Findings}{71}{appendix.B}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {C}Code listings}{72}{appendix.C}% 
+\contentsline {chapter}{\numberline {C}Code listings}{74}{appendix.C}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{73}{appendix.C}% 
+\contentsline {chapter}{References}{75}{table.C.1}% 
