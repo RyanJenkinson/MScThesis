@@ -1,0 +1,8 @@
+{
+    "data_dir": "../processed_data",
+    "tasks": "SST-2",
+    "model_name": "bert-base-uncased",
+    "num_epochs": 1,
+    "learning_rate": 2e-5,
+    "train_batch_size": 24
+}
