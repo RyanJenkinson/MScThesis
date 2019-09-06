@@ -32,6 +32,9 @@ As well as the hyperparameters controlling the architecture of the model, we cou
 \subsection{Multiple Runs}
 In our experiments, we fixed a certain random seed in which we conducted all of our experiments. Different random seeds would correspond to different task samplings and stochastic effects in the optimiser. As such, for a more rigorous study, one would want to repeat the experiments several times across several random seeds and take an average. This would make the study much more robust, but was outside the computational constraints of this study.
 
+\subsection{Weight Sharing}
+To reduce the number of weights in the multitask learning setup, since both the TABSA and ABSA style setup are binary heads performing essentially the same task, we could apply some soft parameter sharing, as defined in Section \ref{section:background:softparametersharing} or tie the weights so that they are identical in value. This will reduce the number of learnable parameters in the model and provide a further form of regularisation that might lead to better performance on the ABSA tasks.
+
 \section{Methodological Extensions}
 \subsection{Mutual Information}
 We could utilise a different approach for ABSA that would prove a very interesting extension indeed. We could investigate the role of \textit{mutual information} by introducing a hyperparameter $\lambda$ that weights the forwards and backwards information from \texttt{text\_a} (the input sentence) and \texttt{text\_b} (in the ABSA case, the corresponding pseudosentence/question asked of the input sentence as per Section \ref{section:background:tabsasentenceconstruction}). Essentially, this is like using the question to predict the response AND using the response to predict the question, and one would expect performance increases to occur if using this methodology.

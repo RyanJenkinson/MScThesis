@@ -73,13 +73,14 @@
 \BOOKMARK [2][-]{subsection.5.1.3}{Task Distributions}{section.5.1}% 73
 \BOOKMARK [2][-]{subsection.5.1.4}{Hyperparameter Tuning}{section.5.1}% 74
 \BOOKMARK [2][-]{subsection.5.1.5}{Multiple Runs}{section.5.1}% 75
-\BOOKMARK [1][-]{section.5.2}{Methodological Extensions}{chapter.5}% 76
-\BOOKMARK [2][-]{subsection.5.2.1}{Mutual Information}{section.5.2}% 77
-\BOOKMARK [2][-]{subsection.5.2.2}{Label Smoothing}{section.5.2}% 78
-\BOOKMARK [1][-]{section.5.3}{Meta Learning}{chapter.5}% 79
-\BOOKMARK [1][-]{section.5.4}{Knowledge Graph Extensions}{chapter.5}% 80
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 81
-\BOOKMARK [0][-]{appendix.A}{Streetbees: A Company Profile \046 Project Relevancy}{}% 82
-\BOOKMARK [0][-]{appendix.B}{Additional Findings}{}% 83
-\BOOKMARK [0][-]{appendix.C}{Code listings}{}% 84
-\BOOKMARK [0][-]{table.C.1}{References}{}% 85
+\BOOKMARK [2][-]{subsection.5.1.6}{Weight Sharing}{section.5.1}% 76
+\BOOKMARK [1][-]{section.5.2}{Methodological Extensions}{chapter.5}% 77
+\BOOKMARK [2][-]{subsection.5.2.1}{Mutual Information}{section.5.2}% 78
+\BOOKMARK [2][-]{subsection.5.2.2}{Label Smoothing}{section.5.2}% 79
+\BOOKMARK [1][-]{section.5.3}{Meta Learning}{chapter.5}% 80
+\BOOKMARK [1][-]{section.5.4}{Knowledge Graph Extensions}{chapter.5}% 81
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 82
+\BOOKMARK [0][-]{appendix.A}{Streetbees: A Company Profile \046 Project Relevancy}{}% 83
+\BOOKMARK [0][-]{appendix.B}{Additional Findings}{}% 84
+\BOOKMARK [0][-]{appendix.C}{Code listings}{}% 85
+\BOOKMARK [0][-]{table.C.1}{References}{}% 86

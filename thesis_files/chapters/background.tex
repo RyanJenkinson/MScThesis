@@ -407,7 +407,7 @@ One common form of joint multitask learning is hard parameter sharing: we share 
 
 Hard parameter sharing reduces overfitting. This can be seen mathematically \cite{Baxter1997} or intuitively: the more tasks we are learning simultaneously, the more our model has to find a representation that captures all of the tasks and the less is our chance of overfitting on our original task.
 
-\subsubsection{Soft Parameter Sharing}
+\subsubsection{Soft Parameter Sharing} \label{section:background:softparametersharing}
 \begin{center}
 	\includegraphics[width=0.5\textwidth]{SoftParameterSharing.png}
 	\captionof{figure}{Soft Parameter Sharing, with image taken from \cite{Ruder2017}}
@@ -469,7 +469,7 @@ In multitask learning, given a set of tasks $\mathcal{T}$, we are training the m
 The main difference between meta learning and regular learning is that \textit{datapoints in meta learning are datasets}. In the meta learning paradigm, we aim to improve generalisation onto new datasets (corresponding to new tasks), as opposed to individual datapoints in the regular learning paradigm. This means we shift our training and testing procedure to instead train, validate and test on (small) \textit{datasets}.  We have a support set $\mathcal{S}$ and a query set $\mathcal{Q}$. The support set is a set of meta training datapoints, which are themselves datasets of tasks. Task $\tau_i$ has associated training and testing datasets $\mathcal{D}_\text{train}^{(i)}$ and $\mathcal{D}_\text{test}^{(i)}$. The training and testing datasets will be performing $K$ shot learning, i.e learning to classify from just $K$ examples, and will thus be of size $K$. The support set and query set will be of size \texttt{meta\_train\_batch\_size} and \texttt{meta\_test\_batch\_size}, respectively.
 
 \subsection{MAML}
-We ideally want an algorithm for meta learning to be model agnostic, and this is what is proposed by Finn et al. in their Model Agnostic Meta Learning (MAML) algorithm \cite{Finn2017}. As long as the model is trained by (some variant of) Gradient Descent \textbf{ref for gradient descent}, we can use this algorithm to update the weights of our model in a way that is mathematically consistent with the type of behaviour we motivated in the previous paragraph.
+We ideally want an algorithm for meta learning to be model agnostic, and this is what is proposed by Finn et al. in their Model Agnostic Meta Learning (MAML) algorithm \cite{Finn2017}. As long as the model is trained by (some variant of) Gradient Descent \cite{Ruder}, we can use this algorithm to update the weights of our model in a way that is mathematically consistent with the type of behaviour we motivated in the previous paragraph.
 
 In their approach, the parameters of the model are explicitly trained such that a small number of gradient steps with a small amount of training data from a new task will produce good generalization performance on that task. In order to get this behaviour, we would want the models internal representation to be broadly suitable for many tasks. Their evaluation shows that this algorithm compares favorably to state-of-the-art one-shot learning methods designed specifically for supervised classification, while using fewer parameters, but that it can also be readily applied to regression and reinforcement learning settings.
 

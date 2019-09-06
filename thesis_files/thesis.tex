@@ -210,11 +210,13 @@ Firstly, I'd like to thank the Machine Learning and Data Science team: Erik, Rya
 \newpage
 % ABSTRACT
 \begin{abstract}
-In this thesis, we aim to investigate how multitask learning can affect the performance of Language Models on difficult downstream aspect based sentiment analysis tasks. We introduce novel task sampling schemas, and leverage dependent subtask hierarchies to fine tune our model jointly on several related tasks in order to regularise the learned embeddings and enabling them to generalise better to our main task. We report major improvements to the current state-of-the-art metrics, of over 2\% relative increase in some cases, showcasing the efficacy of these schemes. 
+In this thesis, we aim to investigate how multitask learning can affect the performance of Language Models on difficult downstream aspect based sentiment analysis tasks. We introduce novel task sampling schemas, and leverage dependent subtask hierarchies to fine tune our model jointly on several related tasks in order to regularise the learned embeddings and enabling them to generalise better to our main task. We report major improvements to the current state-of-the-art metrics, of over 2\% relative increase compared to regular transfer learning in some cases, showcasing the efficacy of these schemes. Furthermore, these schemes perform better than regular multitask learning using a ``round robin" strategy, and the methodology is entirely general meaning it could be applied to a variety of different Natural Language Processing tasks, or indeed to other Machine Learning disciplines such as Computer Vision.
 
-Additionally, we conduct an investigation into how different language models learn, and in particular the importance of how the pretraining methodology can lead to representations which generalise better to complicated downstream tasks such as this.
+Additionally, we conduct an investigation into how different language models learn, and in particular the importance of how the pretraining methodology can lead to representations which generalise better to complicated downstream tasks. This investigation extends the literature in this space and we find important conclusions that multitask pretraining seems to enable better performance on complicated downstream tasks. This is currently an active topic of research for the field.
 
 In order to generalise to new categories, we propose a novel application of Meta Learning to a Few Shot Text Classification regime, and outline how this could be implemented, drawing on the recent literature.
+
+We provide a fully open sourced, commented and code reviewed library for future research in this ever-changing field of transformers for language modelling, and propose ideas for future work in terms of both immediate extensions and longer term ones.
 \end{abstract}
 \newpage 
 
@@ -302,10 +304,12 @@ This project directly relates to the sentiment relations/nodes of the graph, and
 
 The company has applied this NLP technology in a variety of applications including Mood prediction and food prediction, and is working to synergise these models with an additional vision model for images, thereby creating a multimodal image-text system. Additionally, the company is working on an NER tagger, to which we can apply the TABSA methodologies described in this paper to augment their knowledge graph functionalities in terms of understanding fine grained aspect based sentiment of user logs towards specific brands and/or their products in the way we described previously.
 
-The meta learning framework we proposed is also of use to the company, since it aligns with a clients dynamic requirement scheme: wanting to understand how users feel about new aspects of their product portfolios such as sustainability. 
+The meta learning framework we proposed is also of use to the company, since it aligns with a clients dynamic requirement scheme e.g. wanting to understand how users feel about new aspects of their product portfolios such as sustainability. This would mean the model would not have to be retrained from scratch, and only a minimal number of new examples would have to be labelled for the model to effectively learn this category using the structured priors it has already accumulated from previous tasks.
 
 \chapter{Additional Findings} \label{appendix:additionalfindings}
 In this section we plot some additional graphs that are not discussed in major detail in the main text. In particular, we plot the TABSA results. They are not discussed in major detail since we believe the $F_1$ score has been misreported in the literature, since we massively outperform it. In terms of the Strict Accuracy and AUC, we also beat SOTA on these metrics as referenced in Table \ref{table:experiments:sotaresults} but some of the TABSA metrics do not have reported SOTA values, so we exclude the results from our experiments section.
+
+We exclude the plots from the supporting subtasks, since we did not achieve SOTA performance on the SST-2 task and there are no figures for the SOTA performance on the PoS CoNLL 2003 dataset (only the NER task). 
 \begin{figure}
 	\includegraphics[width=\textwidth]{SentihoodResults.pdf}
 	\captionof{figure}{Sentihood Metric Results for Strict Accuracy, and the AUC metrics}

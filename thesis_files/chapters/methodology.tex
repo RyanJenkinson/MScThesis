@@ -207,7 +207,7 @@ We create a folder with an experiment log for the set of tasks $\mathcal{T}$ whe
 		& & \texttt{negative, conflict}\} - ignoring any aspects with no classification & \\
 		& Precision & (True Positives) / (True Positives + False Positives) & 0.9315 \\
 		& Recall & (True Positives) / (True Positives + False Negatives) & 0.9083 \\
-		& F1\_Score & (True Positives) / (True Positives + False Negatives) & 0.9218 \\
+		& F1\_Score & 2*Precision*Recall / (Precision + Recall) & 0.9218 \\
 		\hline
 		\multirow{7}{*}{Sentihood\_QA\_B$^\dagger$} & \multirow{2}{*}{Strict Aspect Accuracy} & Calculates the strict accuracy of all 4 aspect categories  & \multirow{2}{*}{0.798} \\
 		& & \{\texttt{General, Price, Safety, Transit-location}\} being correct for a given datum & \\
@@ -215,7 +215,7 @@ We create a folder with an experiment log for the set of tasks $\mathcal{T}$ whe
 		& Aspect AUC & The Area Under the Curve (AUC) for the Aspect Classes & 0.975 \\
 		& Precision & (True Positives) / (True Positives + False Positives) & - \\
 		& Recall & (True Positives) / (True Positives + False Negatives) & - \\
-		& F1\_Score & (True Positives) / (True Positives + False Negatives) & 0.879 \\
+		& F1\_Score & 2*Precision*Recall / (Precision + Recall) & 0.879 \\
 	    \hline
 	\end{tabular}}
 	\captionof{table}{A table showing all the key metrics we will be reporting as per the literature, as well as brief description of each one and the current SOTA. \newline 
